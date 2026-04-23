@@ -3,87 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo OAR Comercial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <title>Grupo ROA | Innovación y Comercio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        /* Variables de color basadas en las imágenes proporcionadas */
         :root {
-            --azul-marino: #0b3470;
-            --verde-oar: #28a745;
-            --turquesa-claro: #38b2a6;
+            --azul-corporativo: #0d2c54; /* Navy Blue de los uniformes */
+            --turquesa: #2fa69a; /* Verde agua del logo */
+            --verde-lima: #4caf50; /* Verde brillante OAR */
             --blanco: #ffffff;
-            --gris-fondo: #f4f7f6;
-            --texto-oscuro: #333333;
+            --gris-claro: #f8f9fa;
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            box-抱ing: border-box;
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: var(--gris-fondo);
-            color: var(--texto-oscuro);
-        }
-
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Navegación */
-        header {
+            font-family: 'Roboto', sans-serif;
             background-color: var(--blanco);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: #333;
+        }
+
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background: var(--blanco);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--azul-marino);
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--azul-corporativo);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .logo span {
-            color: var(--verde-oar);
-        }
+        .nav-logo span { color: var(--turquesa); }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
 
-        nav ul li a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--azul-marino);
+            color: var(--azul-corporativo);
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: 0.3s;
         }
 
-        nav ul li a:hover {
-            color: var(--turquesa-claro);
-        }
+        .nav-links a:hover { color: var(--turquesa); }
 
-        /* Sección Hero (Inicio) */
+        /* --- HERO SECTION (INICIO) --- */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--azul-marino) 0%, #1a52a3 50%, var(--turquesa-claro) 100%);
+            height: 90vh;
+            background: linear-gradient(rgba(13, 44, 84, 0.8), rgba(47, 166, 154, 0.6)), url('https://images.unsplash.com/photo-1534452286302-5f56ec420c35?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -94,270 +81,198 @@
             margin-top: 60px;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-out 0.5s both;
-        }
-
-        .btn {
-            background-color: var(--verde-oar);
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-transform: uppercase; }
+        .hero p { font-size: 1.5rem; margin-bottom: 2rem; max-width: 800px; }
+        
+        .btn-cta {
+            background: var(--turquesa);
             color: var(--blanco);
-            padding: 15px 30px;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 1s ease-out 0.8s both;
+            font-weight: bold;
+            transition: 0.4s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
+        .btn-cta:hover { background: var(--verde-lima); transform: scale(1.05); }
+
+        /* --- SECCIÓN VALORES --- */
+        .seccion { padding: 80px 5%; text-align: center; }
+        .seccion-titulo { font-size: 2.5rem; margin-bottom: 50px; color: var(--azul-corporativo); }
+
+        .grid-valores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        /* Secciones Principales */
-        .section-title {
+        .valor-card {
+            background: var(--blanco);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border-top: 8px solid var(--turquesa);
+        }
+
+        .valor-card:hover { transform: translateY(-10px); }
+
+        .valor-card i { font-size: 3rem; color: var(--turquesa); margin-bottom: 20px; }
+
+        /* --- ACCESORIOS --- */
+        .grid-accesorios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .accesorio-item {
+            background: var(--gris-claro);
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
-            font-size: 2.5rem;
-            color: var(--azul-marino);
-            margin: 80px 0 40px;
-            position: relative;
         }
 
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background-color: var(--verde-oar);
-            display: block;
-            margin: 10px auto 0;
-            border-radius: 2px;
+        .accesorio-img {
+            width: 100%;
+            height: 200px;
+            background: #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* --- EQUIPO (Diagrama) --- */
+        .equipo-container {
+            background: var(--azul-corporativo);
+            color: var(--blanco);
+            padding: 60px 5%;
+            border-radius: 30px;
+            margin: 40px 5%;
+        }
+
+        .equipo-roles {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
             justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
         }
 
-        /* Tarjetas de Misión, Visión y Valores */
-        .card {
-            background: var(--blanco);
+        .rol-box {
+            flex: 1 1 250px;
+            padding: 20px;
+            border: 2px solid var(--turquesa);
             border-radius: 15px;
-            padding: 40px 30px;
-            flex: 1 1 300px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: var(--azul-marino);
-        }
+        .rol-box h3 { color: var(--turquesa); margin-bottom: 10px; }
 
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 40px rgba(11, 52, 112, 0.15);
-        }
-
-        .card:hover::before {
-            background: var(--verde-oar);
-        }
-
-        .icon-box {
-            width: 80px;
-            height: 80px;
-            background: var(--turquesa-claro);
-            color: var(--blanco);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            margin: 0 auto 20px;
-            transition: background 0.3s ease;
-        }
-
-        .card:hover .icon-box {
-            background: var(--verde-oar);
-        }
-
-        .card h3 {
-            font-size: 1.8rem;
-            color: var(--azul-marino);
-            margin-bottom: 20px;
-        }
-
-        .card p {
-            line-height: 1.7;
-            color: #555;
-        }
-
-        /* Lista de Valores */
-        .valores-list {
-            list-style: none;
-            text-align: left;
-            margin-top: 20px;
-        }
-
-        .valores-list li {
-            margin-bottom: 15px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-
-        .valores-list li:hover {
-            background: var(--gris-fondo);
-            color: var(--azul-marino);
-        }
-
-        .valores-list li i {
-            color: var(--verde-oar);
-            font-size: 1.2rem;
-        }
-
-        /* Pie de página */
         footer {
-            background-color: var(--azul-marino);
+            background: var(--azul-corporativo);
             color: var(--blanco);
+            padding: 40px;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 80px;
-        }
-
-        /* Animaciones */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px;
-            }
-            nav ul {
-                margin-top: 15px;
-                gap: 15px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo"><i class="fa-solid fa-cart-shopping"></i> Grupo <span>OAR</span></a>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#identidad">Nuestra Identidad</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <a href="#inicio" class="nav-logo">GRUPO <span>ROA</span></a>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#valores">Valores</a></li>
+            <li><a href="#accesorios">Accesorios</a></li>
+            <li><a href="#equipo">Nuestro Equipo</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <h1>Grupo ROA Comercial</h1>
+        <p>Tu aliado comercial. Brindando calidad, ahorro y soluciones eficientes para el progreso local.</p>
+        <a href="#accesorios" class="btn-cta">Explora nuestros productos</a>
     </header>
 
-    <section id="inicio" class="hero">
-        <h1>Grupo Comercial OAR</h1>
-        <p>Impulsando el progreso del comercio local con excelencia, innovación y precios competitivos.</p>
-        <a href="#identidad" class="btn">Conócenos</a>
-    </section>
-
-    <section id="identidad">
-        <h2 class="section-title">Nuestra Identidad</h2>
-        <div class="container">
-            
-            <div class="card">
-                <div class="icon-box">
-                    <i class="fa-solid fa-bullseye"></i>
-                </div>
+    <section id="valores" class="seccion">
+        <h2 class="seccion-titulo">Nuestros Principios</h2>
+        <div class="grid-valores">
+            <div class="valor-card">
+                <i class="fa-solid fa-bullseye"></i>
                 <h3>Misión</h3>
-                <p>Ofrecer una experiencia de compra accesible y eficiente, brindando productos de calidad a precios competitivos, impulsando el progreso del comercio local.</p>
+                <p>Ofrecer una experiencia de compra accesible y eficiente con productos de calidad a precios competitivos.</p>
             </div>
-
-            <div class="card">
-                <div class="icon-box">
-                    <i class="fa-solid fa-telescope"></i>
-                </div>
+            <div class="valor-card">
+                <i class="fa-solid fa-eye"></i>
                 <h3>Visión</h3>
-                <p>Ser la cadena líder en comercio y distribución, reconocida por su innovación, crecimiento y compromiso con el futuro del comercio.</p>
+                <p>Ser la cadena líder en comercio y distribución, reconocida por su innovación y compromiso con el futuro.</p>
             </div>
-
-            <div class="card">
-                <div class="icon-box">
-                    <i class="fa-solid fa-gem"></i>
-                </div>
+            <div class="valor-card">
+                <i class="fa-solid fa-star"></i>
                 <h3>Valores</h3>
-                <ul class="valores-list">
-                    <li><i class="fa-solid fa-shield-halved"></i> Confianza</li>
-                    <li><i class="fa-solid fa-chart-line"></i> Crecimiento</li>
-                    <li><i class="fa-solid fa-lightbulb"></i> Innovación</li>
-                    <li><i class="fa-solid fa-shop"></i> Comercio Accesible</li>
-                    <li><i class="fa-solid fa-briefcase"></i> Desarrollo Empresarial</li>
+                <ul style="list-style:none; line-height:2;">
+                    <li>Confianza • Crecimiento</li>
+                    <li>Innovación • Comercio Accesible</li>
+                    <li>Desarrollo Empresarial</li>
                 </ul>
             </div>
+        </div>
+    </section>
 
+    <section id="accesorios" class="seccion" style="background-color: #f0f4f8;">
+        <h2 class="seccion-titulo">Catálogo de Accesorios</h2>
+        <div class="grid-accesorios">
+            <div class="accesorio-item">
+                <div class="accesorio-img">MUG CORPORATIVO</div>
+                <h4>Ceramic Mug</h4>
+                <p>Marca Grupo ROA</p>
+            </div>
+            <div class="accesorio-item">
+                <div class="accesorio-img">SHOPPING BAG</div>
+                <h4>Eco Paper Bag</h4>
+                <p>Resistente y Elegante</p>
+            </div>
+            <div class="accesorio-item">
+                <div class="accesorio-img">BUSINESS CARDS</div>
+                <h4>Tarjetas de Mando</h4>
+                <p>Presentación Profesional</p>
+            </div>
+            <div class="accesorio-item">
+                <div class="accesorio-img">PACKAGING BOX</div>
+                <h4>Caja de Distribución</h4>
+                <p>Protección Garantizada</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipo" class="equipo-container">
+        <h2 style="text-align: center; font-size: 2.5rem;">El Motor del Negocio</h2>
+        <p style="text-align: center; opacity: 0.8;">Un equipo con roles blindados</p>
+        <div class="equipo-roles">
+            <div class="rol-box">
+                <h3>Abel Ortiz</h3>
+                <p><b>Liderazgo y Ejecución.</b> Aporta orden, resolución operativa y disciplina diaria.</p>
+            </div>
+            <div class="rol-box">
+                <h3>Jeffry Aviles</h3>
+                <p><b>Visión y Crecimiento.</b> Lectura de mercado, expansión y nuevas líneas de negocio.</p>
+            </div>
+            <div class="rol-box">
+                <h3>Edwin Ramírez</h3>
+                <p><b>Análisis y Control.</b> Protege la rentabilidad, aporta datos y control financiero.</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Grupo OAR Comercial. Todos los derechos reservados.</p>
+        <p>&copy; 2026 GRUPO ROA - Todos los derechos reservados.</p>
+        <p>Est. 2024</p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.card');
-            
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            cards.forEach(card => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'all 0.6s ease-out';
-                observer.observe(card);
-            });
-        });
-    </script>
 </body>
 </html>
-
