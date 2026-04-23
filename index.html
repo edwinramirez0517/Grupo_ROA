@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo OAR Comercial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables de color basadas en las imágenes proporcionadas */
+        :root {
+            --azul-marino: #0b3470;
+            --verde-oar: #28a745;
+            --turquesa-claro: #38b2a6;
+            --blanco: #ffffff;
+            --gris-fondo: #f4f7f6;
+            --texto-oscuro: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--gris-fondo);
+            color: var(--texto-oscuro);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--azul-marino);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--verde-oar);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--azul-marino);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--turquesa-claro);
+        }
+
+        /* Sección Hero (Inicio) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--azul-marino) 0%, #1a52a3 50%, var(--turquesa-claro) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .btn {
+            background-color: var(--verde-oar);
+            color: var(--blanco);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(40, 167, 69, 0.4);
+        }
+
+        /* Secciones Principales */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--azul-marino);
+            margin: 80px 0 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--verde-oar);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        /* Tarjetas de Misión, Visión y Valores */
+        .card {
+            background: var(--blanco);
+            border-radius: 15px;
+            padding: 40px 30px;
+            flex: 1 1 300px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--azul-marino);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(11, 52, 112, 0.15);
+        }
+
+        .card:hover::before {
+            background: var(--verde-oar);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: var(--turquesa-claro);
+            color: var(--blanco);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            margin: 0 auto 20px;
+            transition: background 0.3s ease;
+        }
+
+        .card:hover .icon-box {
+            background: var(--verde-oar);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            color: var(--azul-marino);
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Lista de Valores */
+        .valores-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .valores-list li {
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .valores-list li:hover {
+            background: var(--gris-fondo);
+            color: var(--azul-marino);
+        }
+
+        .valores-list li i {
+            color: var(--verde-oar);
+            font-size: 1.2rem;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: var(--azul-marino);
+            color: var(--blanco);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo"><i class="fa-solid fa-cart-shopping"></i> Grupo <span>OAR</span></a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#identidad">Nuestra Identidad</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Grupo Comercial OAR</h1>
+        <p>Impulsando el progreso del comercio local con excelencia, innovación y precios competitivos.</p>
+        <a href="#identidad" class="btn">Conócenos</a>
+    </section>
+
+    <section id="identidad">
+        <h2 class="section-title">Nuestra Identidad</h2>
+        <div class="container">
+            
+            <div class="card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3>Misión</h3>
+                <p>Ofrecer una experiencia de compra accesible y eficiente, brindando productos de calidad a precios competitivos, impulsando el progreso del comercio local.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-telescope"></i>
+                </div>
+                <h3>Visión</h3>
+                <p>Ser la cadena líder en comercio y distribución, reconocida por su innovación, crecimiento y compromiso con el futuro del comercio.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon-box">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
+                <h3>Valores</h3>
+                <ul class="valores-list">
+                    <li><i class="fa-solid fa-shield-halved"></i> Confianza</li>
+                    <li><i class="fa-solid fa-chart-line"></i> Crecimiento</li>
+                    <li><i class="fa-solid fa-lightbulb"></i> Innovación</li>
+                    <li><i class="fa-solid fa-shop"></i> Comercio Accesible</li>
+                    <li><i class="fa-solid fa-briefcase"></i> Desarrollo Empresarial</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Grupo OAR Comercial. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
+
