@@ -4,275 +4,349 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grupo ROA | Innovación y Comercio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --azul-corporativo: #0d2c54; /* Navy Blue de los uniformes */
-            --turquesa: #2fa69a; /* Verde agua del logo */
-            --verde-lima: #4caf50; /* Verde brillante OAR */
+            --azul-marino: #0b3470;
+            --turquesa-vibrante: #1abc9c;
+            --verde-turquesa: #2fa69a;
             --blanco: #ffffff;
-            --gris-claro: #f8f9fa;
+            --gris-fondo: #f0f4f8;
+            --negro-suave: #2c3e50;
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-抱ing: border-box;
-            scroll-behavior: smooth;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--blanco);
-            color: #333;
+            background-color: var(--gris-fondo);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
         /* --- NAVEGACIÓN --- */
-        nav {
-            background: var(--blanco);
+        header {
+            background: linear-gradient(90deg, var(--azul-marino), var(--verde-turquesa));
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
 
-        .nav-logo {
-            font-size: 1.5rem;
+        .logo {
             font-weight: 900;
-            color: var(--azul-corporativo);
-            text-decoration: none;
+            font-size: 1.8rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .nav-logo span { color: var(--turquesa); }
+        .logo span { color: var(--turquesa-vibrante); }
 
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
 
-        .nav-links a {
+        nav ul li a {
+            color: white;
             text-decoration: none;
-            color: var(--azul-corporativo);
             font-weight: 600;
+            cursor: pointer;
+            padding: 8px 15px;
+            border-radius: 20px;
             transition: 0.3s;
         }
 
-        .nav-links a:hover { color: var(--turquesa); }
-
-        /* --- HERO SECTION (INICIO) --- */
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(13, 44, 84, 0.8), rgba(47, 166, 154, 0.6)), url('https://images.unsplash.com/photo-1534452286302-5f56ec420c35?auto=format&fit=crop&q=80&w=2000') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--blanco);
-            padding: 0 20px;
-            margin-top: 60px;
+        nav ul li a:hover, nav ul li a.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--turquesa-vibrante);
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-transform: uppercase; }
-        .hero p { font-size: 1.5rem; margin-bottom: 2rem; max-width: 800px; }
-        
-        .btn-cta {
-            background: var(--turquesa);
-            color: var(--blanco);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.4s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            min-height: 70vh;
         }
 
-        .btn-cta:hover { background: var(--verde-lima); transform: scale(1.05); }
+        .section {
+            display: none; /* Se ocultan por defecto */
+            animation: fadeIn 0.5s ease-in-out;
+        }
 
-        /* --- SECCIÓN VALORES --- */
-        .seccion { padding: 80px 5%; text-align: center; }
-        .seccion-titulo { font-size: 2.5rem; margin-bottom: 50px; color: var(--azul-corporativo); }
+        .section.active { display: block; }
 
-        .grid-valores {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- PÁGINA: IDENTIDAD (Banners) --- */
+        .banner-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .valor-card {
-            background: var(--blanco);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: 0.3s;
-            border-top: 8px solid var(--turquesa);
+        .banner-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            border-bottom: 10px solid var(--verde-turquesa);
+            transition: transform 0.3s;
         }
 
-        .valor-card:hover { transform: translateY(-10px); }
+        .banner-card:hover { transform: translateY(-10px); }
 
-        .valor-card i { font-size: 3rem; color: var(--turquesa); margin-bottom: 20px; }
+        .banner-header {
+            background: var(--azul-marino);
+            color: white;
+            padding: 20px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
 
-        /* --- ACCESORIOS --- */
-        .grid-accesorios {
+        .banner-body { padding: 30px; }
+        .banner-body i { font-size: 3rem; color: var(--turquesa-vibrante); margin-bottom: 20px; }
+        .banner-body p { line-height: 1.6; color: #555; }
+
+        /* --- PÁGINA: EQUIPO --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid var(--gris-fondo);
+        }
+
+        .team-card:hover { border-color: var(--turquesa-vibrante); }
+
+        .team-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gris-fondo);
+            margin-bottom: 20px;
+            border: 4px solid var(--verde-turquesa);
+        }
+
+        .team-card h3 { color: var(--azul-marino); margin-bottom: 10px; }
+        .team-card .role { font-weight: bold; color: var(--verde-turquesa); margin-bottom: 15px; display: block; }
+
+        /* --- PÁGINA: CATÁLOGO --- */
+        .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
         }
 
-        .accesorio-item {
-            background: var(--gris-claro);
-            padding: 20px;
+        .product-card {
+            background: white;
             border-radius: 15px;
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        .accesorio-img {
+        .product-card:hover { box-shadow: 0 10px 30px rgba(47, 166, 154, 0.2); }
+
+        .product-img {
             width: 100%;
-            height: 200px;
-            background: #ddd;
+            height: 180px;
+            background: var(--gris-fondo);
             border-radius: 10px;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
             font-weight: bold;
+            color: var(--azul-marino);
+            border: 1px dashed var(--verde-turquesa);
         }
 
-        /* --- EQUIPO (Diagrama) --- */
-        .equipo-container {
-            background: var(--azul-corporativo);
-            color: var(--blanco);
-            padding: 60px 5%;
-            border-radius: 30px;
-            margin: 40px 5%;
+        .btn-cotizar {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--verde-turquesa);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        .equipo-roles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 40px;
-        }
+        .btn-cotizar:hover { background: var(--azul-marino); }
 
-        .rol-box {
-            flex: 1 1 250px;
-            padding: 20px;
-            border: 2px solid var(--turquesa);
-            border-radius: 15px;
-        }
-
-        .rol-box h3 { color: var(--turquesa); margin-bottom: 10px; }
-
+        /* --- FOOTER --- */
         footer {
-            background: var(--azul-corporativo);
-            color: var(--blanco);
-            padding: 40px;
+            background: var(--azul-marino);
+            color: white;
             text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; }
+            nav ul { gap: 10px; flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#inicio" class="nav-logo">GRUPO <span>ROA</span></a>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#valores">Valores</a></li>
-            <li><a href="#accesorios">Accesorios</a></li>
-            <li><a href="#equipo">Nuestro Equipo</a></li>
-        </ul>
-    </nav>
-
-    <header id="inicio" class="hero">
-        <h1>Grupo ROA Comercial</h1>
-        <p>Tu aliado comercial. Brindando calidad, ahorro y soluciones eficientes para el progreso local.</p>
-        <a href="#accesorios" class="btn-cta">Explora nuestros productos</a>
+    <header>
+        <div class="logo">GRUPO <span>ROA</span></div>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('identidad')" id="link-identidad" class="active">Identidad</a></li>
+                <li><a onclick="showSection('equipo')" id="link-equipo">Nuestro Equipo</a></li>
+                <li><a onclick="showSection('catalog')" id="link-catalog">Catálogo</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="valores" class="seccion">
-        <h2 class="seccion-titulo">Nuestros Principios</h2>
-        <div class="grid-valores">
-            <div class="valor-card">
-                <i class="fa-solid fa-bullseye"></i>
-                <h3>Misión</h3>
-                <p>Ofrecer una experiencia de compra accesible y eficiente con productos de calidad a precios competitivos.</p>
+    <div class="main-container">
+        
+        <section id="identidad" class="section active">
+            <h2 style="text-align:center; margin-bottom:40px; color:var(--azul-marino);">Nuestra Identidad Corporativa</h2>
+            <div class="banner-grid">
+                <div class="banner-card">
+                    <div class="banner-header">Misión</div>
+                    <div class="banner-body">
+                        <i class="fa-solid fa-bullseye"></i>
+                        <p>Ofrecer una experiencia de compra accesible y eficiente, brindando productos de calidad a precios competitivos, impulsando el progreso del comercio local.</p>
+                    </div>
+                </div>
+                <div class="banner-card">
+                    <div class="banner-header">Visión</div>
+                    <div class="banner-body">
+                        <i class="fa-solid fa-telescope"></i>
+                        <p>Ser la cadena líder en comercio y distribución, reconocida por su innovación, crecimiento y compromiso con el futuro del comercio.</p>
+                    </div>
+                </div>
+                <div class="banner-card">
+                    <div class="banner-header">Valores</div>
+                    <div class="banner-body">
+                        <i class="fa-solid fa-gem"></i>
+                        <ul style="list-style:none; text-align:left; display:inline-block;">
+                            <li><i class="fa-solid fa-check" style="font-size:1rem;"></i> Confianza</li>
+                            <li><i class="fa-solid fa-check" style="font-size:1rem;"></i> Crecimiento</li>
+                            <li><i class="fa-solid fa-check" style="font-size:1rem;"></i> Innovación</li>
+                            <li><i class="fa-solid fa-check" style="font-size:1rem;"></i> Comercio Accesible</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="valor-card">
-                <i class="fa-solid fa-eye"></i>
-                <h3>Visión</h3>
-                <p>Ser la cadena líder en comercio y distribución, reconocida por su innovación y compromiso con el futuro.</p>
-            </div>
-            <div class="valor-card">
-                <i class="fa-solid fa-star"></i>
-                <h3>Valores</h3>
-                <ul style="list-style:none; line-height:2;">
-                    <li>Confianza • Crecimiento</li>
-                    <li>Innovación • Comercio Accesible</li>
-                    <li>Desarrollo Empresarial</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="accesorios" class="seccion" style="background-color: #f0f4f8;">
-        <h2 class="seccion-titulo">Catálogo de Accesorios</h2>
-        <div class="grid-accesorios">
-            <div class="accesorio-item">
-                <div class="accesorio-img">MUG CORPORATIVO</div>
-                <h4>Ceramic Mug</h4>
-                <p>Marca Grupo ROA</p>
+        <section id="equipo" class="section">
+            <h2 style="text-align:center; margin-bottom:10px; color:var(--azul-marino);">El Motor del Negocio</h2>
+            <p style="text-align:center; margin-bottom:40px; color:var(--verde-turquesa);">Un equipo con roles blindados</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Abel Ortiz">
+                    <h3>Abel Ortiz</h3>
+                    <span class="role">Liderazgo y Ejecución</span>
+                    <p>Aporta orden, resolución operativa y disciplina diaria para convertir decisiones en acciones.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Jeffry Aviles">
+                    <h3>Jeffry Aviles</h3>
+                    <span class="role">Visión y Crecimiento</span>
+                    <p>Aporta visión de expansión, lectura de mercado y nuevas líneas de negocio para evitar el estancamiento.</p>
+                </div>
+                <div class="team-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Edwin Ramírez">
+                    <h3>Edwin Ramírez</h3>
+                    <span class="role">Análisis y Control</span>
+                    <p>Protege la rentabilidad. Aporta datos, control financiero y seguimiento de indicadores clave.</p>
+                </div>
             </div>
-            <div class="accesorio-item">
-                <div class="accesorio-img">SHOPPING BAG</div>
-                <h4>Eco Paper Bag</h4>
-                <p>Resistente y Elegante</p>
-            </div>
-            <div class="accesorio-item">
-                <div class="accesorio-img">BUSINESS CARDS</div>
-                <h4>Tarjetas de Mando</h4>
-                <p>Presentación Profesional</p>
-            </div>
-            <div class="accesorio-item">
-                <div class="accesorio-img">PACKAGING BOX</div>
-                <h4>Caja de Distribución</h4>
-                <p>Protección Garantizada</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="equipo" class="equipo-container">
-        <h2 style="text-align: center; font-size: 2.5rem;">El Motor del Negocio</h2>
-        <p style="text-align: center; opacity: 0.8;">Un equipo con roles blindados</p>
-        <div class="equipo-roles">
-            <div class="rol-box">
-                <h3>Abel Ortiz</h3>
-                <p><b>Liderazgo y Ejecución.</b> Aporta orden, resolución operativa y disciplina diaria.</p>
+        <section id="catalog" class="section">
+            <h2 style="text-align:center; margin-bottom:40px; color:var(--azul-marino);">Catálogo de Accesorios de Marca</h2>
+            <div class="catalog-grid">
+                <div class="product-card">
+                    <div class="product-img">CERAMIC MUG</div>
+                    <h4>Taza Corporativa</h4>
+                    <p>Cerámica de alta calidad con logo ROA.</p>
+                    <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">ECO PAPER BAG</div>
+                    <h4>Bolsa de Compra</h4>
+                    <p>Resistente, elegante y ecológica.</p>
+                    <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">BUSINESS CARDS</div>
+                    <h4>Tarjetas de Mando</h4>
+                    <p>Presentación profesional premium.</p>
+                    <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">PACKAGING BOX</div>
+                    <h4>Caja de Envío</h4>
+                    <p>Protección garantizada para tus productos.</p>
+                    <a href="#" class="btn-cotizar">Solicitar Cotización</a>
+                </div>
             </div>
-            <div class="rol-box">
-                <h3>Jeffry Aviles</h3>
-                <p><b>Visión y Crecimiento.</b> Lectura de mercado, expansión y nuevas líneas de negocio.</p>
-            </div>
-            <div class="rol-box">
-                <h3>Edwin Ramírez</h3>
-                <p><b>Análisis y Control.</b> Protege la rentabilidad, aporta datos y control financiero.</p>
-            </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
     <footer>
-        <p>&copy; 2026 GRUPO ROA - Todos los derechos reservados.</p>
-        <p>Est. 2024</p>
+        <p>&copy; 2026 Grupo ROA Comercial. Todos los derechos reservados.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">Est. 2024 | Innovación en Comercio y Distribución</p>
     </footer>
 
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => s.classList.remove('active'));
+
+            // Quitar clase active de los links
+            const links = document.querySelectorAll('nav ul li a');
+            links.forEach(l => l.classList.remove('active'));
+
+            // Mostrar la seleccionada
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('link-' + sectionId).classList.add('active');
+
+            // Scroll suave hacia arriba
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
 </body>
 </html>
